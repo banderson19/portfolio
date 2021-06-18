@@ -5,7 +5,7 @@ function About() {
     return (
         <section>
             <div className="center" id="about">
-                <h1>About Me</h1>
+                <h1 style={{}}>About Me</h1>
             </div>
             <div className="center">
                 <img
@@ -14,7 +14,7 @@ function About() {
                    className="photo" 
                 />
             </div>
-            <div className="my-2">
+            <div className="my-2" >
                 <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum turpis sed ex
                 condimentum molestie. Mauris condimentum lectus ut ornare dignissim. Mauris faucibus urna

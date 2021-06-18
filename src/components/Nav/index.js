@@ -1,16 +1,17 @@
 import {React, useEffect } from 'react';
 
+
 function Nav(props) {
     const { currentTab, setCurrentTab } = props;
     return (
         <header className="flex-row px-1">
-            <h2>
-                <a href="/">
+            <h1>
+                <a href="/" style={{fontFamily: 'monospace'}}>
                     Bradford Anderson
                 </a>
-            </h2>
+            </h1>
             <nav>
-                <ul className="flex-row">
+                <ul className="flex-row" style={{fontFamily: 'monospace'}}>
                     <li className={currentTab === "about" ? "mx-2 navActive" : "mx-2"}>
                         <span onClick={() => setCurrentTab("about")}>About Me</span>
                     </li>
