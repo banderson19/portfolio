@@ -1,38 +1,145 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #fff;
+  --secondary: #F3A847;
+  --tertiary: #B12704;
+  --light: #fafafa;
+  --dark: #000000;
+  --darker: #111111;
+  --error: rgb(228, 46, 1);
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
+  --spacing-five: calc(2.5rem);
+
+}
+
+body {
+    font-family: "Roboto Condensed"  sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 18px;
+    letter-spacing: .1em; 
+}
+
+
+.gradient_bg  {
+    /* ff 3.6+ */
+    background:-moz-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%); 
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+
+    /* opera 11.10+ */
+    background:-o-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ED6868', endColorstr='#006E09', GradientType=1 );
+
+    /* ie 10+ */
+    background:-ms-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+
+    /* global 94%+ browsers support */
+    background:linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+}
+/* -------- NavBar -------- */
+.navbar {
+    text-transform: uppercase;
+}
+
+nav a.nav-link {
+    font-weight: 500px;
+    letter-spacing: .0325rem;
+    cursor: pointer;
+}
+nav a.nav-link:focus {
+    border-bottom: .1875rem solid rgba(0, 110, 9, 1)
+}
+
+
+/* -------- ABOUT PAGE -------- */
+
+
+/* -------- CONTACT PAGE -------- */
+
+
+/* -------- P PAGE -------- */
+
+
+/*
+
+
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  width: 25%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.img-thumbnail {
+  width: auto;
+  height: 300px;
+  margin-bottom: 50px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.modalBackdrop {
+	background: rgba(0, 0, 0, .65);
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.modalContainer {
+	background: var(--darker);
+	border-radius: 5px;
+	max-width: 100%;
+	margin: 50px auto;
+	padding: 15px;
+	width: 960px;
 }
 
-.App-link {
-  color: #61dafb;
+.modalTitle {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+	background: var(--primary);
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 30px;
+	padding: 10px 15px;	
 }
+
+a {
+	border-radius: 5px;
+	color: var(--primary);
+	font-weight: 600;
+	padding: 2px 4px;
+	margin-left: -2px;
+	margin-right: -2px;
+	
+}
+ */

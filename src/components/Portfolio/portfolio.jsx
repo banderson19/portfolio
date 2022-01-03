@@ -1,5 +1,5 @@
 import React from 'react';
-import Project from '../Project';
+import Project from '../Project/project';
 
 //images 
 import run_buddy from '../../assets/images/run_buddy.png';
@@ -22,19 +22,20 @@ function Portfolio() {
     ];
 
     return (
-        <section>
-            <div className="center">
-                <h1 className="page-header">My Portfolio</h1>
+        <section className="container-fluid">
+            <div className="justify-content-md-center">
+                <h1 className="col align-self-center">My Portfolio</h1>
             </div>
-            <div>
-                <ul className="flex-row mobile-row">
-                    <li className="padding">
-                        <Project projects={projects[0]}></Project>
-                    </li>
-                    <li className="padding">
-                        <Project projects={projects[1]}></Project>
-                    </li>
-                </ul>
+            <div className="row justify-content-center">
+                <div className="col col-4">
+                    <Project projects={projects[0]}></Project>
+                </div> 
+                <div className="col col-4">
+                    <Project projects={projects[1]}></Project>
+                </div>
+                    
+                
+              
             </div>
         </section>
     )
