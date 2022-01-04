@@ -52,14 +52,28 @@ body {
 .navbar {
     text-transform: uppercase;
 }
+.scrolled{ background-color:#000; }
+.nav-transparent { background-color:transparent;}
+.navbar-default{
+    transition:500ms ease;
+    background:transparent;
+  }
+  .navbar-default.scrolled{
+    background:#000;
+  }
 
 nav a.nav-link {
     font-weight: 500px;
     letter-spacing: .0325rem;
     cursor: pointer;
 }
-nav a.nav-link:focus {
-    border-bottom: .1875rem solid rgba(0, 110, 9, 1)
+.nav-item > .nav-link:hover {
+    background-color: rgba(237, 104, 104, 1);
+    border-radius: 12%;
+}
+
+nav .dropdown-menu a {
+    text-decoration: none;
 }
 
 
@@ -69,8 +83,17 @@ nav a.nav-link:focus {
 /* -------- CONTACT PAGE -------- */
 
 
-/* -------- P PAGE -------- */
+/* -------- PORTFOLIO PAGE -------- */
 
+
+/* -------- HEADER PAGE -------- */
+.header-wrapper {
+    position: relative;
+    background: url('./assets/images/spideyMonitor.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
 
 /*
 

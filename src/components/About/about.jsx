@@ -3,7 +3,7 @@ import AboutMeImg from '../../assets/images/aboutMeImg.jpg';
 
 function About() {
     return (
-        <section id="about" className="container">
+        <section id="about" className="container mt-5 pt-5">
             <div className="row justify-content-md-center">
                 <div className="col col-lg-2 m-4">
                     <img
