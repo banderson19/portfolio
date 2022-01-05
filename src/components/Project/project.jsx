@@ -8,7 +8,6 @@ function Project(props) {
     const name = currentProject.name;
     const description = currentProject.description;
     const image = currentProject.image;
-    // const techs = currentProject.technologies;
     const appLink = currentProject.deployed;
     const gitLink = currentProject.github;
 
@@ -23,11 +22,11 @@ function Project(props) {
                 <Card.Body>
                     <Card.Title className="card-title">{name}</Card.Title>
                     <Card.Text className="card-text">{description}</Card.Text>
-                    <Card.Link href={appLink} target="_blank" className="card-link">
+                    <Card.Link href={appLink} target="_blank" className="card-link" style={{"textDecoration": "none", "hover": "bold"}}>
                         {name} App
                     </Card.Link>
                     <br></br>
-                    <Card.Link href={gitLink} target="_blank" className="card-link">
+                    <Card.Link href={gitLink} target="_blank" className="card-link" style={{"textDecoration": "none", "hover": "bold"}}>
                         {name} Github
                     </Card.Link>
                 </Card.Body>

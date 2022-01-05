@@ -27,8 +27,8 @@ function Portfolio() {
             <div className="text-center m-5">
                 <h1>My Portfolio</h1>
             </div>
-            <div className="d-flex flex-wrap col justify-content-center justify-content-around">
-                <div className="mb-4">
+            <div className="portfolioContainer">
+                <div className="">
                     <Project projects={projects[0]}></Project>
                 </div> 
                 <div className="">
