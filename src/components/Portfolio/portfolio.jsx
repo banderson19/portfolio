@@ -3,13 +3,14 @@ import Project from '../Project/project';
 
 //images 
 import run_buddy from '../../assets/images/run_buddy.png';
+import work_day_scheduler from '../../assets/images/work_day_scheduler.png';
 
 function Portfolio() {
     const projects = [
         {
             name: 'Work Day Scheduler',
             description: 'this a daily scheduling app',
-            image: run_buddy,
+            image: work_day_scheduler,
             github: 'https://github.com/banderson19/work-day-scheduler',
             deployed: 'https://banderson19.github.io/work-day-scheduler/'
         },{
@@ -26,11 +27,11 @@ function Portfolio() {
             <div className="text-center m-5">
                 <h1>My Portfolio</h1>
             </div>
-            <div className="row justify-content-center">
-                <div className="col col-4">
+            <div className="d-flex flex-wrap col justify-content-center justify-content-around">
+                <div className="mb-4">
                     <Project projects={projects[0]}></Project>
                 </div> 
-                <div className="col col-4">
+                <div className="">
                     <Project projects={projects[1]}></Project>
                 </div>
                     

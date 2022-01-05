@@ -27,53 +27,56 @@ body {
     font-size: 18px;
     letter-spacing: .1em; 
 }
+.gradient_bg {
 
-
-.gradient_bg  {
     /* ff 3.6+ */
-    background:-moz-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%); 
+    background:-moz-radial-gradient(circle at 100% 0%, rgba(182, 86, 68, 1) 0%, rgba(46, 86, 0, 1) 100%);
 
     /* safari 5.1+,chrome 10+ */
-    background:-webkit-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+    background:-webkit-radial-gradient(circle at 100% 0%, rgba(182, 86, 68, 1) 0%, rgba(46, 86, 0, 1) 100%);
 
     /* opera 11.10+ */
-    background:-o-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
-
-    /* ie 6-9 */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ED6868', endColorstr='#006E09', GradientType=1 );
+    background:-o-radial-gradient(circle at 100% 0%, rgba(182, 86, 68, 1) 0%, rgba(46, 86, 0, 1) 100%);
 
     /* ie 10+ */
-    background:-ms-linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+    background:-ms-radial-gradient(circle at 100% 0%, rgba(182, 86, 68, 1) 0%, rgba(46, 86, 0, 1) 100%);
 
-    /* global 94%+ browsers support */
-    background:linear-gradient(328deg, rgba(237, 104, 104, 1) 0%, rgba(0, 110, 9, 1) 100%);
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 100% 0%, rgba(182, 86, 68, 1) 0%, rgba(46, 86, 0, 1) 100%);
+
 }
+
 /* -------- NavBar -------- */
 .navbar {
-    text-transform: uppercase;
+  text-transform: uppercase;
+  background: transparent;
 }
-.scrolled{ background-color:#000; }
-.nav-transparent { background-color:transparent;}
-.navbar-default{
-    transition:500ms ease;
-    background:transparent;
-  }
-  .navbar-default.scrolled{
-    background:#000;
-  }
+
+.navbar.active {
+  transition: 0.5s ease ;
+  background-color: black;
+}
+
+.navbar-brand-top {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
 
 nav a.nav-link {
-    font-weight: 500px;
-    letter-spacing: .0325rem;
-    cursor: pointer;
+  font-weight: bold;
+  letter-spacing: .0325rem;
+  cursor: pointer;
 }
+
 .nav-item > .nav-link:hover {
-    background-color: rgba(237, 104, 104, 1);
-    border-radius: 12%;
+  transition: 0.5s ease;
+  border-radius: 12%;
+  background-color: rgba(237, 104, 104, 1);
 }
 
 nav .dropdown-menu a {
-    text-decoration: none;
+text-decoration: none;
 }
 
 
@@ -95,6 +98,38 @@ nav .dropdown-menu a {
     height: 100vh;
 }
 
+.main-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:  0;
+  left:  0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Roboto Condensed"  sans-serif;
+}
+
+.main-info h1{
+  color: rgb(218, 99, 45);
+  text-transform: uppercase;
+}
+
+.typed-text {
+  font-size: 2rem;
+  color:  white;
+}
+
+.btn-main-offer {
+  border: 1px solid red;
+  text-transform: uppercase;
+  border-radius: 0px;
+  padding: .625rem .75rem .75rem .75rem;
+  color: white;
+  margin: 2rem;
+}
 /*
 
 
