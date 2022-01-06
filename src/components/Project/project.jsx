@@ -12,21 +12,22 @@ function Project(props) {
     const gitLink = currentProject.github;
 
     return (
-        <Card style={{ width: "18rem" }}>
+        <Card style={{ width: "18rem", backgroundColor: "grey", marginTop: ".5rem"}}>
             <Card.Img
                 variant="top"
                 src={`${image}`}
                 className="card-image"
+                style={{paddingTop: ".5rem"}}
             />
             <div className="center">
-                <Card.Body>
+                <Card.Body style={{backgroundColor: "grey"}}>
                     <Card.Title className="card-title">{name}</Card.Title>
                     <Card.Text className="card-text">{description}</Card.Text>
-                    <Card.Link href={appLink} target="_blank" className="card-link" style={{"textDecoration": "none", "hover": "bold"}}>
+                    <Card.Link href={appLink} target="_blank" className="card-link" style={{hover: "bold", color:"black"}}>
                         {name} App
                     </Card.Link>
                     <br></br>
-                    <Card.Link href={gitLink} target="_blank" className="card-link" style={{"textDecoration": "none", "hover": "bold"}}>
+                    <Card.Link href={gitLink} target="_blank" className="card-link" style={{hover: "bold", color:"black"}}>
                         {name} Github
                     </Card.Link>
                 </Card.Body>

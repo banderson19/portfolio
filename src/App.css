@@ -8,11 +8,11 @@
 :root {
   --primary: #fff;
   --secondary: #F3A847;
-  --tertiary: #B12704;
+  --tertiary: #da642d;
   --light: #fafafa;
   --dark: #000000;
   --darker: #111111;
-  --error: rgb(228, 46, 1);
+  --error: #e42e01;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
   --spacing-five: calc(2.5rem);
@@ -73,7 +73,7 @@ nav a.nav-link {
 .nav-item > .nav-link:hover {
   transition: 0.5s ease;
   border-radius: 12%;
-  background-color: rgba(237, 104, 104, 1);
+  background-color: #ed6868;
 }
 
 nav .dropdown-menu a {
@@ -124,7 +124,7 @@ text-decoration: none;
 }
 
 .main-info h1{
-  color: rgb(218, 99, 45);
+  color: var(--tertiary);
   text-transform: uppercase;
 }
 

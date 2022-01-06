@@ -8,7 +8,7 @@ import work_day_scheduler from '../../assets/images/work_day_scheduler.png';
 function Portfolio() {
     const projects = [
         {
-            name: 'Work Day Scheduler',
+            name: 'Work Day Schedule',
             description: 'this a daily scheduling app',
             image: work_day_scheduler,
             github: 'https://github.com/banderson19/work-day-scheduler',
