@@ -54,8 +54,10 @@ body {
 }
 
 .navbar.active {
+  margin-bottom: 100px;
   transition: 0.5s ease ;
   background-color: #37383a;
+  position: fixed;
 }
 
 .navbar-brand-top {
@@ -83,6 +85,28 @@ text-decoration: none;
 
 /* -------- ABOUT PAGE -------- */
 
+.profilePic {
+  display: flex;
+  justify-items: center;
+}
+
+@media (max-width:  1200px) {
+  .profilePic {
+    justify-content: center;
+  }
+}
+@media (max-width: 990px) {
+  .aboutContent{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .profilePic {
+    justify-content: center;
+  }
+}
 
 /* -------- CONTACT PAGE -------- */
 
