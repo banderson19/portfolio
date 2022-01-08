@@ -6,10 +6,10 @@ import { About, Contact, Nav, Portfolio, Footer, Header } from  './components/in
 function App() {
   return (
     <div className="gradient_bg">
-				{/* <Nav/> */}
+				<Nav/>
         <Header/>
         <About/>
-        {/* <Contact/> */}
+        <Contact/>
         <Portfolio/>
         <Footer/>
 
