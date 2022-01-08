@@ -110,6 +110,27 @@ text-decoration: none;
 
 /* -------- CONTACT PAGE -------- */
 
+.contactParentContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.formContainer {
+  display: flex;
+  width: 70%;
+}
+
+.userContactInfo {
+  display: flex;
+}
+.infoContainer {
+  display: flex;
+  width: 30%;
+}
+
+
 /* -------- PORTFOLIO PAGE -------- */
 .portfolioContainer {
   display: flex;
