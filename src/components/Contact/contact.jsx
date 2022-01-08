@@ -18,7 +18,7 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="m-4">
+        <section id="contact" className="m-4 container">
             <h2 className="h1-responsive font-weight-bold text-center my-4">Contact me</h2>
             <div className="row">
                 <div className="col-md-9 mb-md-0 mb-5">

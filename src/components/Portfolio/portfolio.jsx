@@ -1,5 +1,5 @@
 import React from 'react';
-import Project from '../Project/project';
+import Project from '../Project/project.jsx';
 
 //images 
 import run_buddy from '../../assets/images/run_buddy.png';
