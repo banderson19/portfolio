@@ -9,7 +9,7 @@ function App() {
 				{/* <Nav/> */}
         <Header/>
         <About/>
-        <Contact/>
+        {/* <Contact/> */}
         <Portfolio/>
         <Footer/>
 
