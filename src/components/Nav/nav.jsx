@@ -16,10 +16,9 @@ const Nav = () => {
     // <nav id="navbar" className="navbar active fixed-top navbar-expand-lg navbar-light">
 
     return (
-        <section id="navbar">
-            <div className={navbar ? 'navbar active fixed-top navbar-expand-lg navbar-dark' : 'navbar fixed-top navbar-expand-lg navbar-light'}>
+            <nav id="navbar" className={navbar ? 'navbar active fixed-top navbar-expand-lg navbar-dark' : 'navbar fixed-top navbar-expand-lg navbar-light'}>
                 <div className="container">
-                <a className={navbar ? 'navbar-brand' : "navbar-brand-top"}  href="#">Bradford Anderson</a>
+                <a className={navbar ? 'navbar-brand' : "navbar-brand-top"}  href="#">Brad Anderson</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,8 +44,8 @@ const Nav = () => {
                     </div>
                 </div>
                 </div>
-            </div>
-        </section>
+            </nav>
+        
 
     )
 }
