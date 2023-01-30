@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Card from "react-bootstrap/Card";
 
 function Project(props) {
@@ -12,12 +12,15 @@ function Project(props) {
     const gitLink = currentProject.github;
 
     return (
-        <Card style={{ width: "18rem", backgroundColor: "grey", marginTop: ".5rem"}}>
+        <div className="container-fluid">
+
+
+            {/* <Card style={{ width: "18rem", backgroundColor: "grey", marginTop: ".5rem"}}>
             <Card.Img
                 variant="top"
                 src={`${image}`}
                 className="card-image"
-                style={{paddingTop: ".5rem"}}
+                style={{paddingTop: ".5rem", height: '18rem'}}
             />
             <div className="center">
                 <Card.Body style={{backgroundColor: "grey"}}>
@@ -32,7 +35,22 @@ function Project(props) {
                     </Card.Link>
                 </Card.Body>
             </div>
-        </Card>
+        </Card> */}
+
+            <div className="row">
+                <div className="" >
+                    <img className="mx-auto mt-3 d-block col-3 img-fluid img-thumbnail" src={`${image}`} style={{ width: "18.75rem", height: "18.75rem" }} alt="Generic placeholder image" />
+
+                </div>
+                <div className=" my-auto text-center">
+                    <h1 className="text-danger fw-bold"><span className="fst-italic">{`${name}`}</span> </h1>
+                    <a href={`${appLink}`}><p className="fw-bold">{`${appLink}`}</p></a>
+                    <a href={`${gitLink}`}><p className="fw-bold">{`${gitLink}`}</p></a>
+
+                    <h4>{`${description}`}</h4>
+                </div>
+            </div>
+        </div>
     )
 }
 
