@@ -21,6 +21,8 @@ https://www.strava.com/api/v3/athlete/activities?access_token=c7f541a79b18a36f08
 4)refresh token
 https://www.strava.com/oauth/token?client_id=101017&client_secret=c1e7e45a0017074bc741358378a4d8b0c2065ab0&refresh_token=5ca2fb4c71ea03d81e349a9676d258e03acddbb0&grant_type=refresh_token
 
+
+100 requests every 15 minutes, 1000 daily
 */}
 const Strava = () => {
   const [activity, setActivity] = useState([]);
@@ -56,7 +58,7 @@ const Strava = () => {
       .then(res => getActivites(res))
   }
 
-  reAuthorize()
+  // reAuthorize()
   return (
     <div>
 
