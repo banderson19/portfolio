@@ -2,6 +2,9 @@ import React from 'react';
 import AboutMeImg from '../../assets/images/aboutMeImg.jpg';
 import profilePic from '../../assets/images/IMG_0014.jpg';
 
+
+/* have gallery of photos in stead of paragraph about me */
+
 function About() {
     return (
         <section id="about" className="container mt-3 pt-3">

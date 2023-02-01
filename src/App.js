@@ -10,7 +10,7 @@ function App() {
         <Header/>
         <Strava/>
         <Timeline/>
-        <About/>
+        {/* <About/> */}
         <Contact/>
         <Portfolio/>
         <Footer/>

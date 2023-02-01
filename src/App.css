@@ -180,9 +180,21 @@ text-decoration: none;
   margin: 2rem;
 }
 
+/* ----- Stava -----*/
+#map { 
+  height: 100vh;
+}
+
+.leaflet-container {
+  width: 500px;
+  height:500px;
+  margin: auto;
+  
+}
+
 /* ----- Timeline -----*/
 
-body{margin-top:20px;}
+
 .timeline-steps {
     display: flex;
     justify-content: center;

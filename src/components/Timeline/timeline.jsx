@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+/* have timeline scroll  while screen shrinks */
 const Timeline = () => {
     return (
         <div className="container mt-5">
@@ -59,9 +61,7 @@ const Timeline = () => {
                                 <p className="h5 text-muted mb-0 mb-lg-0">UofU Coding Bootcamp</p>
                                 <hr/>
                                 <div className="h6 text-muted mb-0 mb-lg-0">
-                                    <p>ReactJS</p>
-                                    <p>MongoDB</p>
-                                    <p>SQL & noSQL</p>
+                                    <p>MERN FullStack Developer</p>
                                     <p>GraphQL</p>
                                 </div>
                             </div>
