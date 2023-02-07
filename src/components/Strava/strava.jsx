@@ -31,19 +31,21 @@ https://www.strava.com/oauth/token?client_id=101017&client_secret=c1e7e45a001707
 
 const Strava = () => {
 
-  // interface Activity {
+  // interface Node {
   //   activityPositions: any;
-  //   activityyName: String;
+  //   activityName: string;
   // }
 
+  const [polylines, setPolylines] = useState([]);
+
   const [activities, setActivities] = useState([]);
-  const [polylinesData, setPolylinesData] = useState([]);
 
   const client_id = '101017';
   const client_secret = 'c1e7e45a0017074bc741358378a4d8b0c2065ab0';
   const refresh_token = 'c2e26d6d39cfc0eda9e9c4bb23c236229d9cde43';
   const auth_link = "https://www.strava.com/oauth/token";
   const activities_link = `https://www.strava.com/api/v3/athlete/activities`
+  const limeOptions = { color: 'lime' }
 
 
   useEffect(() => {
@@ -55,23 +57,37 @@ const Strava = () => {
       const stravaActivityResponse = await axios.get(`${activities_link}?access_token=${stravaAuthResponse[0].data.access_token}`);
       console.log(stravaActivityResponse.data);
       setActivities(stravaActivityResponse.data);
-      console.log('111', activities)
+      // console.log('activitie', activities)
       // console.log('polyline', activities[0].map.summary_polyline)
 
-      const polylines = []
-      activities.map((activity, i) => {
-        // console.log(polyline.decode(activity.map.summary_polyline))
-        let activityPositions = polyline.decode(activity.map.summary_polyline);
-        let activityName = activity.name
-        polylines.push(polyline.decode(activity.map.summary_polyline), activity.name)
-    })
-      setPolylinesData(polylines);
-      console.log('333', polylinesData)
+      const polylines = [];
+      for (let i = 0; i < stravaActivityResponse.data.length; i += 1) {
+        const activity_polyline = stravaActivityResponse.data[i].map.summary_polyline;
+        const activity_name = stravaActivityResponse.data[i].name;
+        polylines.push({activityPositions: polyline.decode(activity_polyline), activityName: activity_name});
+        setPolylines(polylines)
+      }
+      console.log('444', polylines)
+    //   activities.map((activity, i) => {
+    //     // console.log(polyline.decode(activity.map.summary_polyline))
+    //     let activityPositions = polyline.decode(activity.map.summary_polyline);
+    //     let activityName = activity.name
+    //     polylines.push(polyline.decode(activity.map.summary_polyline), activity.name)
+    // })
+    //   setPolylinesData(polylines);
+    //   console.log('333', polylinesData)
     }
     fetchData();
   }, []);
-  
-  console.log('222', polylinesData)
+
+  function minTommss(minutes) {
+    const sign =  minutes < 0 ? "-" : "";
+    const min = Math.floor(Math.abs(minutes));
+    const sec = Math.floor((Math.abs(minutes) * 60) % 60)
+    return sign + (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec;
+  }
+  console.log('activities', activities)
+  console.log('222', polylines)
   return (
     <div id="map">
       <MapContainer center={[40.758480, -111.888138]} zoom={6} scrollWheelZoom={false}>
@@ -79,8 +95,8 @@ const Strava = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {polylinesData.map((polyline, i) => {
-          <Polyline key = {i} positions={polyline[i]}>
+        {polylines.map((polyline, i) => {
+          <Polyline key = {i} pathOptions={limeOptions} positions={polyline.activityPositions[i]}>
             <Popup>
               <div>
                 <h2>{"Name: " + polyline.activityName}</h2>
@@ -101,8 +117,8 @@ const Strava = () => {
           <tr>
             <th scope="col">id</th>
             <th scope="col">Sport Type</th>
+            <th scope="col">Name</th>
             <th scope="col">Avg Speed</th>
-            <th scope="col">Max Speed</th>
             <th scope="col">Distance</th>
             <th scope="col">Time</th>
             <th scope="col">Elevation Gain</th>
@@ -114,11 +130,12 @@ const Strava = () => {
               <tr key={i}>
                 <td>{i++}</td>
                 <td>{activity.sport_type}</td>
-                <td>{Math.round(activity.average_speed)}</td>
-                <td>{Math.round(activity.max_speed)}</td>
+                <td>{activity.name}</td>
+                {/* minute per mile = 26.8224 ÷ (meter per second) */}
+                <td>{minTommss((26.8224 / activity.average_speed))}</td>
                 <td>{(activity.distance/1609).toFixed(2)} mi</td>
                 <td>{new Date(activity.moving_time * 1000).toISOString().slice(11,19)}</td>
-                <td>{Math.round(activity.elev_high - activity.elev_low)}</td>
+                <td>{Math.round(activity.total_elevation_gain * 3.281)}</td>
               </tr>
             )
           })}
