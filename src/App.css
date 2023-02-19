@@ -182,7 +182,7 @@ text-decoration: none;
 
 /* ----- Stava -----*/
 #map { 
-  height: 100vh;
+  height: 70vh;
 }
 
 .leaflet-container {
