@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import './strava.css'
+import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import polyline from '@mapbox/polyline';
 import stravaLogo from '../../assets/images/strava.webp';
+
 
 
 /* Get athorization code from authorization page. this is a one time, manual step.
@@ -42,8 +44,6 @@ const Strava = () => {
   const activities_link = `https://www.strava.com/api/v3/athlete/activities`
   const upload_id = `https://www.strava.com/api/v3/uploads`
   const stravaOrangeOptions = { color: '#f55202' }
-  const decodepoly = 'wnovFld_jTu@_@i@IEEWBaA@o@KIIAECa@@QV}@@OF{BAIC?BUByAPsEFm@H]LYNWZ_@^WXKPEPO^Gx@[\IVOl@IpABbBAxE?JALIZBTAVFxACFCLDfACh@B^HnA@bAGbA?\Fb@@p@An@Gr@Fx@?PAX@P?XG|AFzAALFBNAD@~BAtD@NCtIBfACVDv@ELCtA?t@@VEfCJnCr@vIFjABjAGvCUrCWdGE~ACjEB~BAp@@v@@dJA~H@jCEn@HfA@r@@HC^?`@BtBFJEPA\@HCPBPCh@BXEb@BzAA`@@R@~E@PA`A@zBAlABl@CFANDP@j@CT@lADPA`@@h@C^@h@AX?fABRAr@Bf@CP@h@ChA@lBCt@BxBAd@GH[B]E_@@EA_A@E@GFGPGHWBo@DcA?ECYBWAOBe@AK@a@CeAAm@FUEE@i@AUC[BSAKDEC[@KBMCw@Ae@@k@?EAcA?aA@_BA[@OCA@CEMBiACsA@e@CIEOFGCSBc@?Y@ECa@B_@AeABk@AKBuAA[@OA[?y@CgABWAU@i@C_@DKEEBUCu@?qABs@CY@kBAW@OCk@BWCM@i@AcBD_@AO@SCY?CCqADw@?EAi@@MCYD_@CQUMGc@ES@m@Ic@?MDIC_@@UCGAEOSQOEGEMq@IUKMAMQa@AY@{AD}@Hy@?WRwAL_B?QFSPoAHYDYHO@QPs@Fa@Py@`@gDXeBBCJ}@Le@Do@RgA?OTaAH}@Py@Dk@PaA\cDLw@ZyCFYBEBc@TeB?ST}ATwBLq@?GEQFQAGZ}ANyARuA@SRqAXgEH_B?sAFgD?{ADw@IcADmEEqCF}D@oGHuBG{DBkAAuC@y@BEHEPDX?JDTC^BRCh@?LCfADxATFBZFFDLAL@v@?ZHBDJ?bANvAb@LBDBd@?^Ir@Wr@ITADBn@FZ?h@C\@j@Jr@\b@Z'
-  const mapAPI = 'AIzaSyAT1GFC4AcVURyDTA-h6prTBwk_eIjtVl0'
 
   useEffect(() => {
     async function fetchData() {
@@ -125,7 +125,7 @@ const Strava = () => {
               <div className="col-sm-4">
                 <div className="row" >
                   <div className="col-2 my-2">
-                    <MapContainer style={{ "height": "7rem", "width": "7rem" }} center={[activity.start_latlng[0], activity.start_latlng[1]]} zoom={10} zoomControl={false} attributionControl={false} scrollWheelZoom={false}>
+                    <MapContainer className="mapContainer" style={{ "height": "6rem", "width": "6rem" }} center={[activity.start_latlng[0], activity.start_latlng[1]]} zoom={10} zoomControl={false} attributionControl={false} scrollWheelZoom={false}>
                       <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -140,11 +140,11 @@ const Strava = () => {
                     <p className="text-muted" style={{ "fontSize": ".9rem" }}>{activityDate(activity.start_date)}</p>
 
 
-                    <table>
+                    <table className="" >
                       <thead>
                         <tr className='text-muted'>
                           <th style={{ "fontSize": ".9rem" }}>Pace</th>
-                          <th style={{ "fontSize": ".9rem" }}>Distance</th>
+                          <th style={{ "fontSize": ".9rem" }}>Dist.</th>
                           <th style={{ "fontSize": ".9rem" }}>Time</th>
                           <th style={{ "fontSize": ".9rem" }}>Elev.</th>
                         </tr>
