@@ -47,7 +47,7 @@ const Strava = () => {
   const auth_link = "https://www.strava.com/oauth/token";
   const activities_link = `https://www.strava.com/api/v3/athlete/activities`
   const upload_id = `https://www.strava.com/api/v3/uploads`
-  const limeOptions = { color: 'lime' }
+  const stravaOrangeOptions = { color: '#f55202' }
   const decodepoly = 'wnovFld_jTu@_@i@IEEWBaA@o@KIIAECa@@QV}@@OF{BAIC?BUByAPsEFm@H]LYNWZ_@^WXKPEPO^Gx@[\IVOl@IpABbBAxE?JALIZBTAVFxACFCLDfACh@B^HnA@bAGbA?\Fb@@p@An@Gr@Fx@?PAX@P?XG|AFzAALFBNAD@~BAtD@NCtIBfACVDv@ELCtA?t@@VEfCJnCr@vIFjABjAGvCUrCWdGE~ACjEB~BAp@@v@@dJA~H@jCEn@HfA@r@@HC^?`@BtBFJEPA\@HCPBPCh@BXEb@BzAA`@@R@~E@PA`A@zBAlABl@CFANDP@j@CT@lADPA`@@h@C^@h@AX?fABRAr@Bf@CP@h@ChA@lBCt@BxBAd@GH[B]E_@@EA_A@E@GFGPGHWBo@DcA?ECYBWAOBe@AK@a@CeAAm@FUEE@i@AUC[BSAKDEC[@KBMCw@Ae@@k@?EAcA?aA@_BA[@OCA@CEMBiACsA@e@CIEOFGCSBc@?Y@ECa@B_@AeABk@AKBuAA[@OA[?y@CgABWAU@i@C_@DKEEBUCu@?qABs@CY@kBAW@OCk@BWCM@i@AcBD_@AO@SCY?CCqADw@?EAi@@MCYD_@CQUMGc@ES@m@Ic@?MDIC_@@UCGAEOSQOEGEMq@IUKMAMQa@AY@{AD}@Hy@?WRwAL_B?QFSPoAHYDYHO@QPs@Fa@Py@`@gDXeBBCJ}@Le@Do@RgA?OTaAH}@Py@Dk@PaA\cDLw@ZyCFYBEBc@TeB?ST}ATwBLq@?GEQFQAGZ}ANyARuA@SRqAXgEH_B?sAFgD?{ADw@IcADmEEqCF}D@oGHuBG{DBkAAuC@y@BEHEPDX?JDTC^BRCh@?LCfADxATFBZFFDLAL@v@?ZHBDJ?bANvAb@LBDBd@?^Ir@Wr@ITADBn@FZ?h@C\@j@Jr@\b@Z'
 
 
@@ -102,7 +102,7 @@ const Strava = () => {
   console.log('activities', activities)
   console.log('polyline', polylines)
   return (
-    <div id="map">
+    <div id="map" style={{ "marginBottom": "500px" }}>
       <div className='row'>
         <div className="col col-lg-4 mt-4 ms-3">
           <img
@@ -111,9 +111,8 @@ const Strava = () => {
             className="ali"
             style={{ "height": "100px" }}
           />
-          <h6>follow my Strava</h6>
-          {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>
-        <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
+          {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
+          <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>
         </div>
         <div className="row justify-content-end col-lg-8 mt-5">
           <div className="col text-center mt-3">
@@ -124,78 +123,45 @@ const Strava = () => {
           </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col-4">
 
-          <MapContainer center={[40.550829051062465, -111.90492996945977]} zoom={5} scrollWheelZoom={false}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {/* <TileLayer
-          url='https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
-          maxZoom={20}
-          subdomains={['mt1', 'mt2', 'mt3']}
-        /> */}
-            {activities.map((activity, i) => {
-              return (
-                <div>
-                  <Polyline pathOptions={limeOptions} positions={polyline.decode(activity.map.summary_polyline)}>
-                    <Popup>
-                      <div>
-                        <h2>{activity.name}</h2>
-                      </div>
-                    </Popup>
-                  </Polyline>
-
-                  <Marker position={[activity.start_latlng[0], activity.start_latlng[1]]}>
-                    <Popup>
-                      <div>
-                        <h2>{activity.name}</h2>
-                      </div>
-                    </Popup>
-                  </Marker>
+      <div className="container-fluid">
+        <div className="d-flex flex-wrap mt-1" style={{ position: 'relative', height: '500px', overflow: 'auto', display: 'block' }}>
+          {activities.map((activity, i) => {
+            return (
+              <div className="col-sm-4">
+                <div className="row" >
+                  <div className="col-2 my-2">
+                    <MapContainer style={{ "height": "5rem", "width": "5rem" }} center={[activity.start_latlng[0], activity.start_latlng[1]]} zoom={10} zoomControl={false} attributionControl={false} scrollWheelZoom={false}>
+                      <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <Polyline pathOptions={stravaOrangeOptions} positions={polyline.decode(activity.map.summary_polyline)}></Polyline>
+                      {/* <Marker position={[activity.start_latlng[0], activity.start_latlng[1]]}>
+                        <Popup>
+                          <div>
+                            <h6>{activity.name}</h6>
+                          </div>
+                        </Popup>
+                      </Marker> */}
+                    </MapContainer>
+                  </div>
+                  <div className="col row mt-1" style={{"marginLeft" : "2rem"}} >
+                   
+                      <h5 style={{"color":"#3a8fbf"}}>{activity.name}</h5>
+                  
+                    <div className="row">
+                      <div className="col">{minTommss((26.8224 / activity.average_speed))}</div>
+                      <div className="col">{(activity.distance / 1609).toFixed(2)} </div>
+                      <div className="col">{new Date(activity.moving_time * 1000).toISOString().slice(11, 19)}</div>
+                      {/* <div className="col">{Math.round(activity.total_elevation_gain * 3.281)} ft</div> */}
+                    </div>
+                  </div>
                 </div>
-
-              )
-            })}
-          </MapContainer>
-        </div>
-
-        <div className="col-6 mt-3 mx-3 border border-2 rounded" style={{ position: 'relative', height: '500px', overflow: 'auto', display: 'block' }}>
-
-          <table className="table table-bordered table-striped" style={{ position: 'relative' }}>
-            <thead>
-              <tr style={{ position: 'sticky' }}>
-                <th scope="col">id</th>
-                <th scope="col">Sport Type</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mile Pace</th>
-                <th scope="col">Distance</th>
-                <th scope="col">Time</th>
-                <th scope="col">Elevation Gain</th>
-                {/* <th scope="col">polyline</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {activities.map((activity, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{i}</td>
-                    <td>{activity.sport_type}</td>
-                    <td>{activity.name}</td>
-                    {/* minute per mile = 26.8224 ÷ (meter per second) */}
-                    <td>{minTommss((26.8224 / activity.average_speed))}</td>
-                    <td>{(activity.distance / 1609).toFixed(2)} mi</td>
-                    <td>{new Date(activity.moving_time * 1000).toISOString().slice(11, 19)}</td>
-                    <td>{Math.round(activity.total_elevation_gain * 3.281)} ft</td>
-                    {/* <td>{activity.map.summary_polyline}</td> */}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-
+                <hr></hr>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
