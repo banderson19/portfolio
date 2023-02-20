@@ -32,13 +32,7 @@ https://www.strava.com/oauth/token?client_id=101017&client_secret=c1e7e45a001707
 
 const Strava = () => {
 
-  // interface Node {
-  //   activityPositions: any;
-  //   activityName: string;
-  // }
-
   const [polylines, setPolylines] = useState([]);
-
   const [activities, setActivities] = useState([]);
 
   const client_id = '101017';
@@ -49,7 +43,7 @@ const Strava = () => {
   const upload_id = `https://www.strava.com/api/v3/uploads`
   const stravaOrangeOptions = { color: '#f55202' }
   const decodepoly = 'wnovFld_jTu@_@i@IEEWBaA@o@KIIAECa@@QV}@@OF{BAIC?BUByAPsEFm@H]LYNWZ_@^WXKPEPO^Gx@[\IVOl@IpABbBAxE?JALIZBTAVFxACFCLDfACh@B^HnA@bAGbA?\Fb@@p@An@Gr@Fx@?PAX@P?XG|AFzAALFBNAD@~BAtD@NCtIBfACVDv@ELCtA?t@@VEfCJnCr@vIFjABjAGvCUrCWdGE~ACjEB~BAp@@v@@dJA~H@jCEn@HfA@r@@HC^?`@BtBFJEPA\@HCPBPCh@BXEb@BzAA`@@R@~E@PA`A@zBAlABl@CFANDP@j@CT@lADPA`@@h@C^@h@AX?fABRAr@Bf@CP@h@ChA@lBCt@BxBAd@GH[B]E_@@EA_A@E@GFGPGHWBo@DcA?ECYBWAOBe@AK@a@CeAAm@FUEE@i@AUC[BSAKDEC[@KBMCw@Ae@@k@?EAcA?aA@_BA[@OCA@CEMBiACsA@e@CIEOFGCSBc@?Y@ECa@B_@AeABk@AKBuAA[@OA[?y@CgABWAU@i@C_@DKEEBUCu@?qABs@CY@kBAW@OCk@BWCM@i@AcBD_@AO@SCY?CCqADw@?EAi@@MCYD_@CQUMGc@ES@m@Ic@?MDIC_@@UCGAEOSQOEGEMq@IUKMAMQa@AY@{AD}@Hy@?WRwAL_B?QFSPoAHYDYHO@QPs@Fa@Py@`@gDXeBBCJ}@Le@Do@RgA?OTaAH}@Py@Dk@PaA\cDLw@ZyCFYBEBc@TeB?ST}ATwBLq@?GEQFQAGZ}ANyARuA@SRqAXgEH_B?sAFgD?{ADw@IcADmEEqCF}D@oGHuBG{DBkAAuC@y@BEHEPDX?JDTC^BRCh@?LCfADxATFBZFFDLAL@v@?ZHBDJ?bANvAb@LBDBd@?^Ir@Wr@ITADBn@FZ?h@C\@j@Jr@\b@Z'
-
+  const mapAPI = 'AIzaSyAT1GFC4AcVURyDTA-h6prTBwk_eIjtVl0'
 
   useEffect(() => {
     async function fetchData() {
@@ -57,19 +51,9 @@ const Strava = () => {
         axios.post(`${auth_link}?client_id=${client_id}&client_secret=${client_secret}&refresh_token=${refresh_token}&grant_type=refresh_token`)
       ]);
 
-      const stravaActivityResponse = await axios.get(`${activities_link}?access_token=${stravaAuthResponse[0].data.access_token}`);
+      const stravaActivityResponse = await axios.get(`${activities_link}?per_page=200&access_token=${stravaAuthResponse[0].data.access_token}`);
       console.log(stravaActivityResponse.data);
       setActivities(stravaActivityResponse.data);
-
-      // const uploadId = [];
-      // for (let i = 0; i < stravaActivityResponse.data.length; i += 1) {
-      //   const activity_upload_id = stravaActivityResponse.data[i].upload_id;
-      //   const uploadIds = await axios.get(`${upload_id}/${activity_upload_id}?access_token=${stravaAuthResponse[0].data.access_token}`)
-      //   console.log('uploadid', uploadIds)
-      //   // uploadId.push({activity_id})
-      // }
-      // console.log('activitie', activities)
-      // console.log('polyline', activities[0].map.summary_polyline)
 
       const polylines = [];
       for (let i = 0; i < stravaActivityResponse.data.length; i += 1) {
@@ -79,14 +63,6 @@ const Strava = () => {
         setPolylines(polylines)
       }
       console.log('444', polylines)
-      //   activities.map((activity, i) => {
-      //     // console.log(polyline.decode(activity.map.summary_polyline))
-      //     let activityPositions = polyline.decode(activity.map.summary_polyline);
-      //     let activityName = activity.name
-      //     polylines.push(polyline.decode(activity.map.summary_polyline), activity.name)
-      // })
-      //   setPolylinesData(polylines);
-      //   console.log('333', polylinesData)
     }
 
     fetchData();
@@ -99,29 +75,47 @@ const Strava = () => {
     const sec = Math.floor((Math.abs(minutes) * 60) % 60)
     return sign + (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec;
   }
+
+  function activityDate(date) {
+
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+      "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const dateObj = new Date(date)
+    const formattedMonth = months[dateObj.getMonth()];
+    const weekday = weekdays[dateObj.getDay()];
+    const day = dateObj.getDate()
+    const year = dateObj.getFullYear()
+    const formattedTimeStamp = `${weekday}, ${formattedMonth} ${day}, ${year}`;
+    return formattedTimeStamp
+
+  }
   console.log('activities', activities)
   console.log('polyline', polylines)
   return (
-    <div id="map" style={{ "marginBottom": "500px" }}>
+    <div id="map container-fluid bg-light" style={{ "backgroundColor": "#f8f9fa" }}>
       <div className='row'>
-        <div className="col col-lg-4 mt-4 ms-3">
+        <div className="col col-lg-4 mt-2 ms-3">
           <img
             src={stravaLogo}
             alt="about-me"
             className="ali"
             style={{ "height": "100px" }}
           />
-          {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
-          <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>
+          {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>
+          <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
         </div>
-        <div className="row justify-content-end col-lg-8 mt-5">
-          <div className="col text-center mt-3">
-            <h3>PR: 3:35</h3>
+        <div className="row justify-content-end col-lg-8 mt-5 ">
+          <div className="col text-center">
+            <h6 style={{"text-decoration": "underline"}}>Best</h6>
+            <h5>Bank of America Chicago Marathon: 3:35</h5>
           </div>
-          <div className="col text-center mt-3">
-            <h3>Goal: 2:50</h3>
+          <div className="col text-center ">
+            <h6 style={{"text-decoration": "underline"}}>Goal</h6>
+            <h5>Boston 25' (2:50 time) </h5>
           </div>
         </div>
+        <hr></hr>
       </div>
 
       <div className="container-fluid">
@@ -131,31 +125,47 @@ const Strava = () => {
               <div className="col-sm-4">
                 <div className="row" >
                   <div className="col-2 my-2">
-                    <MapContainer style={{ "height": "5rem", "width": "5rem" }} center={[activity.start_latlng[0], activity.start_latlng[1]]} zoom={10} zoomControl={false} attributionControl={false} scrollWheelZoom={false}>
+                    <MapContainer style={{ "height": "7rem", "width": "7rem" }} center={[activity.start_latlng[0], activity.start_latlng[1]]} zoom={10} zoomControl={false} attributionControl={false} scrollWheelZoom={false}>
                       <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                       />
                       <Polyline pathOptions={stravaOrangeOptions} positions={polyline.decode(activity.map.summary_polyline)}></Polyline>
-                      {/* <Marker position={[activity.start_latlng[0], activity.start_latlng[1]]}>
-                        <Popup>
-                          <div>
-                            <h6>{activity.name}</h6>
-                          </div>
-                        </Popup>
-                      </Marker> */}
+
                     </MapContainer>
                   </div>
-                  <div className="col row mt-1" style={{"marginLeft" : "2rem"}} >
-                   
-                      <h5 style={{"color":"#3a8fbf"}}>{activity.name}</h5>
-                  
-                    <div className="row">
-                      <div className="col">{minTommss((26.8224 / activity.average_speed))}</div>
-                      <div className="col">{(activity.distance / 1609).toFixed(2)} </div>
-                      <div className="col">{new Date(activity.moving_time * 1000).toISOString().slice(11, 19)}</div>
-                      {/* <div className="col">{Math.round(activity.total_elevation_gain * 3.281)} ft</div> */}
-                    </div>
+                  <div className="col row mt-1 " style={{ "marginLeft": "2rem", "marginBottom": "8px" }} >
+
+                    <h6 style={{ "color": "#3a8fbf" }}>{activity.name}</h6>
+                    <p className="text-muted" style={{ "fontSize": ".9rem" }}>{activityDate(activity.start_date)}</p>
+
+
+                    <table>
+                      <thead>
+                        <tr className='text-muted'>
+                          <th style={{ "fontSize": ".9rem" }}>Pace</th>
+                          <th style={{ "fontSize": ".9rem" }}>Distance</th>
+                          <th style={{ "fontSize": ".9rem" }}>Time</th>
+                          <th style={{ "fontSize": ".9rem" }}>Elev.</th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                          <tr>
+                            <td style={{ "fontSize": ".9rem" }}>{minTommss((26.8224 / activity.average_speed))}</td>
+                            <td style={{ "fontSize": ".9rem" }}>{(activity.distance / 1609).toFixed(2)}</td>
+                            <td style={{ "fontSize": ".9rem" }}>{new Date(activity.moving_time * 1000).toISOString().slice(11, 19)}</td>
+                            <td style={{ "fontSize": ".9rem" }}>{Math.round(activity.total_elevation_gain * 3.281)}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+
+                    {/* <div className="row">
+                      <div className="col" style={{ "fontSize": ".9rem" }}>{minTommss((26.8224 / activity.average_speed))}</div>
+                      <div className="col" style={{ "fontSize": ".9rem" }}>{(activity.distance / 1609).toFixed(2)}</div>
+                      <div className="col" style={{ "fontSize": ".9rem" }}>{new Date(activity.moving_time * 1000).toISOString().slice(11, 19)}</div>
+                      <div className="col" style={{ "fontSize": ".9rem" }}>{Math.round(activity.total_elevation_gain * 3.281)} ft</div>
+                      <div className="text-muted" style={{ "fontSize": ".9rem" }}>{activityDate(activity.start_date)}</div>
+                    </div> */}
                   </div>
                 </div>
                 <hr></hr>
