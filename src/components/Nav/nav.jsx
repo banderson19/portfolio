@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Anderson_Bradford_Resume from '../../assets/files/Anderson_Bradford_Resume.pdf';
 
 const Nav = () => {
     const [navbar, setNavbar] = useState(false);
 
     const changeNavbarBackground = () => {
-        if(window.scrollY >= 10) {
+        if (window.scrollY >= 10) {
             setNavbar(true);
         } else {
             setNavbar(false);
@@ -16,14 +16,14 @@ const Nav = () => {
     // <nav id="navbar" className="navbar active fixed-top navbar-expand-lg navbar-light">
 
     return (
-            <nav id="navbar" className={navbar ? 'navbar active fixed-top navbar-expand-lg navbar-dark' : 'navbar fixed-top navbar-expand-lg navbar-light'}>
-                <div className="container">
-                <a className={navbar ? 'navbar-brand' : "navbar-brand-top"}  href="#">Brad Anderson</a>
+        <nav id="navbar" className={navbar ? 'navbar active fixed-top navbar-expand-lg navbar-dark' : 'navbar fixed-top navbar-expand-lg navbar-light'}>
+            <div className="container">
+                <a className={navbar ? 'navbar-brand' : "navbar-brand-top"} href="#">Brad Anderson</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav" style={{textAlign: 'end'}}>
+                    <ul className="navbar-nav" style={{ textAlign: 'end' }}>
                         <li className="nav-item">
                             <a className="nav-link" href="#about">About me</a>
                         </li>
@@ -43,10 +43,8 @@ const Nav = () => {
                         </div>
                     </div>
                 </div>
-                </div>
-            </nav>
-        
-
+            </div>
+        </nav>
     )
 }
 

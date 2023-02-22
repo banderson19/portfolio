@@ -4,3 +4,7 @@
       width: 3rem;
     }
   }
+
+  .borderCustom {
+    box-shadow: inset 0 0 12px #f55202
+  }
