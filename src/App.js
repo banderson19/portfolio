@@ -9,8 +9,8 @@ function App() {
 				<Nav/>
         <Header/>
         <Strava/>
-        <Timeline/>
-        {/* <About/> */}
+        {/* <Timeline/> */}
+        <About/>
         <Contact/>
         <Portfolio/>
         <Footer/>

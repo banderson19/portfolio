@@ -1,12 +1,22 @@
 ** Tasks to do ** 
 
-# Development 2.0
+# Pre Host 2.0
 
-## client side
-*  carousel with different quotes
-*  slider component featuring resume and downloadable
-*  update shl site
-*  blog of my life past 5 years
+## Stava Component
+*  Filter for favorite & indoor runs 
+*  more stats "coming soon" button
+
+## Timeline
+*  Important timeline or not important
+
+## About me
+* Turn into Header
+* No paragraph just short mission statement
+
+## Gallery of favorite Photos
+
+
+
 
 
 ## emailjs template 
