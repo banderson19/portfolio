@@ -44,17 +44,17 @@ function Portfolio() {
             <div className="text-center m-5">
                 <h1>Featured Projects</h1>
             </div>
-            <div className="portfolioContainer">
-                <div className="">
+            <div className="portfolioContainer row d-flex flex-wrap">
+                <div className="col-lg-6">
                     <Project projects={projects[0]}></Project>
                 </div> 
-                <div className="">
+                <div className="col-lg-6">
                     <Project projects={projects[1]}></Project>
                 </div>
-                <div className="">
+                <div className="col-lg-6">
                     <Project projects={projects[2]}></Project>
                 </div>
-                <div className="">
+                <div className="col-lg-6">
                     <Project projects={projects[3]}></Project>
                 </div>              
             </div>
