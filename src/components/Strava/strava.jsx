@@ -57,7 +57,9 @@ const Strava = () => {
   const month = new Date();
   const firstMonthDay = new Date(month.getFullYear(), month.getMonth(), 1);
   const lastMonthDay = new Date(month.getFullYear(), month.getMonth() + 1, 0);
-
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const currentMonth = months[curr.getMonth()]
+  
   useEffect(() => {
     async function fetchData() {
       const stravaAuthResponse = await axios.all([
@@ -75,7 +77,9 @@ const Strava = () => {
         const activity_type = activity.type
         // console.log(activity_date)
         // console.log('firstMonthDay', firstMonthDay)
-        if (month_activity_date >= firstMonthDay && month_activity_date <= lastMonthDay && activity_type == 'Run') {
+        // add `&& activity_type == 'Run'` later to just get running stats
+
+        if (month_activity_date >= firstMonthDay && month_activity_date <= lastMonthDay) {
           thisMonthsData.push(activity)
         }
       })
@@ -90,7 +94,8 @@ const Strava = () => {
 
         // console.log(week_activity_date)
         // console.log('firstWeekDay', firstWeekDay)
-        if (week_activity_date >= firstWeekDay && week_activity_date <= lastWeekDay && activity_type == 'Run') {
+        // add `&& activity_type == 'Run'` later to just get running stats
+        if (week_activity_date >= firstWeekDay && week_activity_date <= lastWeekDay ) {
           thisWeeksData.push(activity)
         }
       })
@@ -101,12 +106,15 @@ const Strava = () => {
     fetchData();
   }, []);
 
+  // Monthly Data
   {/* {console.log(monthlyData.reduce(function (acc, obj) { return acc + obj.distance; }, 0))} */}
-
-  const monthlyDistance = monthlyData.reduce(function(acc, obj) { return acc + obj.distance}, 0)
-  const monthlyTime =  monthlyData.reduce(function(acc, obj)  { return acc + obj.elapsed_time}, 0)
-  const monthlyElevation =  monthlyData.reduce(function(acc, obj)  { return acc + obj.total_elevation_gain}, 0)
-
+  const monthlyDistance = monthlyData.reduce(function(acc, obj) {return acc + obj.distance}, 0)
+  const monthlyTime =  monthlyData.reduce(function(acc, obj)  {return acc + obj.elapsed_time}, 0)
+  const monthlyElevation =  monthlyData.reduce(function(acc, obj)  {return acc + obj.total_elevation_gain}, 0)
+  // Weekly Data
+  const weeklyDistance = weeklyData.reduce(function(acc, obj) { return acc + obj.distance}, 0)
+  const weeklyTime = weeklyData.reduce(function(acc, obj) {return acc + obj.elapsed_time}, 0)
+  const weeklyElevation = weeklyData.reduce(function(acc, obj) {return acc + obj.total_elevation_gain}, 0)
 
   function minTommss(minutes) {
     const sign = minutes < 0 ? "-" : "";
@@ -159,18 +167,19 @@ const Strava = () => {
           {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>  */}
           {/* <iframe height='160' width='300' frameborder='0' allowtransparency='false' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
 
-          <div className="col-4 text-center align-self-center">
-            <h6>{formatDate(firstWeekDay)} - {formatDate(lastWeekDay)}</h6>
-          </div>
-          <div className="col-4 align-self-center mb-2">
-          
-          {/* {console.log(monthlyData.reduce(function (acc, obj) { return acc + obj.distance; }, 0))} */}
-          
-            
-            <ul className="list-group list-group-horizontal justify-content-between" style={{ "list-style-type": "none" }}>
+          <div className="col-4 text-center align-self-center mb-2 pe-2">
+            <h6>Month of {currentMonth} <span><strong>running</strong></span> stats</h6>
+            <ul className="list-group list-group-horizontal justify-content-around" style={{ "list-style-type": "none" }}>
               <li>Distance: {(monthlyDistance / 1609).toFixed(2).replace(/^0(?:0:0?)?/, '')}mi</li>
               <li>Time: {new Date(monthlyTime * 1000).toISOString().slice(11, 19).replace(/^0(?:0:0?)?/, '')}</li>
-              <li>Elevation: {Math.round(monthlyElevation * 3.281)}ft</li>
+            </ul>         
+            </div>
+          <div className="col-4 align-self-center mb-2">
+          <h6 className="text-center">{formatDate(firstWeekDay)} - {formatDate(lastWeekDay)}</h6>
+            <ul className="list-group list-group-horizontal justify-content-between" style={{ "list-style-type": "none" }}>
+              <li>Distance: {(weeklyDistance / 1609).toFixed(2).replace(/^0(?:0:0?)?/, '')}mi</li>
+              <li>Time: {new Date(weeklyTime * 1000).toISOString().slice(11, 19).replace(/^0(?:0:0?)?/, '')}</li>
+              <li>Elevation: {Math.round(weeklyElevation * 3.281)}ft</li>
             </ul>
           </div>
           <div className="col-4 text-center align-self-center mb-2">
