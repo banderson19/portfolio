@@ -3,6 +3,8 @@ import Typed from 'react-typed';
 import github from '../../assets/images/github.png';
 import linkedIn from '../../assets/images/linkedin.png';
 
+
+/* loop through a second Typed function showing different hobbies */
 const Header = () => {
     return (
         <div className="header-wrapper">

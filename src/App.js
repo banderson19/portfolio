@@ -1,7 +1,7 @@
 import React from 'react';
 import  { BrowserRouter as Router } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
-import { About, Contact, Nav, Portfolio, Footer, Header } from  './components/index';
+import { About, Strava, Timeline, Contact, Nav, Portfolio, Footer, Header } from  './components/index';
 
 function App() {
   return (
@@ -10,6 +10,8 @@ function App() {
         <Header/>
         <About/>
         <Contact/>
+        <Strava/>
+        {/* <Timeline/> */}
         <Portfolio/>
         <Footer/>
 
