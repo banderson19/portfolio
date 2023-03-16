@@ -31,17 +31,20 @@ const Nav = () => {
                             <a className="nav-link" href="#contact">Contact</a>
                         </li>
                         <li className="nav-item">
+                            <a className="nav-link" href="#strava">Strava</a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="#portfolio">Portfolio</a>
                         </li>
                     </ul>
-                    <div className="dropdown">
+                    {/* <div className="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             RESUME
                         </button>
                         <div className="dropdown-menu pl-2" aria-labelledby="dropdownMenuButton">
                             <a href={Anderson_Bradford_Resume} download>Resume</a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>

@@ -8,10 +8,10 @@ function App() {
     <div className="gradient_bg">
 				<Nav/>
         <Header/>
-        <Strava/>
-        {/* <Timeline/> */}
         <About/>
         <Contact/>
+        <Strava/>
+        {/* <Timeline/> */}
         <Portfolio/>
         <Footer/>
 
