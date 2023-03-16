@@ -29,6 +29,11 @@ https://www.strava.com/oauth/token?client_id=101017&client_secret=c1e7e45a001707
 100 requests every 15 minutes, 1000 daily
 */
 
+/* INBOX */
+/* 
+  * Filter: indoor runs, outdoor runs, cycle ride, runs, favorites
+  * History of monthly stats. 
+*/
 /* EDITS */
 
 /* Activities data with Commute == 'true' can be considered favorites and only display when ** filtered ** out */
@@ -46,7 +51,6 @@ const Strava = () => {
   const refresh_token = 'c2e26d6d39cfc0eda9e9c4bb23c236229d9cde43';
   const auth_link = "https://www.strava.com/oauth/token";
   const activities_link = `https://www.strava.com/api/v3/athlete/activities`
-  const upload_id = `https://www.strava.com/api/v3/uploads`
   const stravaOrangeOptions = { color: '#f55202' }
 
   const curr = new Date(); // get current date
@@ -154,41 +158,42 @@ const Strava = () => {
   return (
     <div id="map container" style={{ "backgroundColor": "#FAFAFA" }}>
       <div>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center" style={{'backgroundColor': '#f7f7fa'}}>
           <img
             src={stravaLogo}
             alt="about-me"
-            className="ali"
+            className="ali mt-2"
             style={{ "height": "40px" }}
           />
+          <div className="text-center align-self-center my-2">
+            <a href="https://www.strava.com/athletes/anderson_bradford" className="btn" style={{ "color": "white", "backgroundColor": "#f55202" }} role="button">
+              View all of Brad's strava  activity »
+            </a>
+          </div>
         </div>
-        <div className='row align-self-center' >
+        <div className='row align-self-center justify-content-around mt-2' style={{'backgroundColor': '#f7f7fa'}}>
 
           {/* <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/48135828/latest-rides/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe>  */}
           {/* <iframe height='160' width='300' frameborder='0' allowtransparency='false' scrolling='no' src='https://www.strava.com/athletes/48135828/activity-summary/f1d64d43cfdb96bad50dbbb5fe348125094ddf9c'></iframe> */}
 
-          <div className="col-4 text-center align-self-center mb-2 pe-2">
+          <div className="col-5 text-center align-self-center mb-2 pe-2 " >
             <h6>Month of {currentMonth} <span><strong>running</strong></span> stats</h6>
             <ul className="list-group list-group-horizontal justify-content-around" style={{ "list-style-type": "none" }}>
               <li>Distance: {(monthlyDistance / 1609).toFixed(2).replace(/^0(?:0:0?)?/, '')}mi</li>
               <li>Time: {new Date(monthlyTime * 1000).toISOString().slice(11, 19).replace(/^0(?:0:0?)?/, '')}</li>
             </ul>         
             </div>
-          <div className="col-4 align-self-center mb-2">
+          <div className="col-5 align-self-center mb-2">
           <h6 className="text-center">{formatDate(firstWeekDay)} - {formatDate(lastWeekDay)}</h6>
-            <ul className="list-group list-group-horizontal justify-content-between" style={{ "list-style-type": "none" }}>
+            <ul className="list-group list-group-horizontal justify-content-around" style={{ "list-style-type": "none" }}>
               <li>Distance: {(weeklyDistance / 1609).toFixed(2).replace(/^0(?:0:0?)?/, '')}mi</li>
               <li>Time: {new Date(weeklyTime * 1000).toISOString().slice(11, 19).replace(/^0(?:0:0?)?/, '')}</li>
               <li>Elevation: {Math.round(weeklyElevation * 3.281)}ft</li>
             </ul>
           </div>
-          <div className="col-4 text-center align-self-center mb-2">
-            <a href="https://www.strava.com/athletes/anderson_bradford" className="btn" style={{ "color": "white", "backgroundColor": "#f55202" }} role="button">
-              View all of Brad's strava  activity »
-            </a>
-          </div>
-          <hr></hr>
+          
         </div>
+          <hr></hr>
 
         <div className="container-fluid pb-2">
           <div className="d-flex flex-wrap" style={{ position: 'relative', height: '500px', overflow: 'auto', display: 'block' }}>
